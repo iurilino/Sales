@@ -12,7 +12,7 @@ namespace Sales.Business.Models
         public bool Ativo { get; set; }
 
         /* EF Relations */
-        public IEnumerable<Vendedor> Vendedores { get; set; }
+        public IEnumerable<Produto> Produtos { get; set; }
         /* EF Relations */
     }
 }

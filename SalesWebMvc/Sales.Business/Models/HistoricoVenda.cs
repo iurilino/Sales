@@ -16,8 +16,11 @@ namespace Sales.Business.Models
         /* EF Relations */
         public Vendedor Vendedor { get; set; }
         public Guid VendedorId { get; set; }
+
         public Cliente Cliente { get; set; }
         public Guid ClienteId { get; set; }
+
+        public Produto ProdutoId { get; set; }
         public IEnumerable<Produto> Produtos { get; set; }
         /* EF Relations */
     }
