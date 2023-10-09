@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Programação\\Sales\\Sales\\SalesWebMvc\\Sales.Data\\Sales.Data.csproj": {}
+    "F:\\Programação\\Sales\\Sales\\SalesWebMvc\\src\\Sales.Data\\Sales.Data.csproj": {}
   },
   "projects": {
-    "F:\\Programação\\Sales\\Sales\\SalesWebMvc\\Sales.Business\\Sales.Business.csproj": {
+    "F:\\Programação\\Sales\\Sales\\SalesWebMvc\\src\\Sales.Business\\Sales.Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Programação\\Sales\\Sales\\SalesWebMvc\\Sales.Business\\Sales.Business.csproj",
+        "projectUniqueName": "F:\\Programação\\Sales\\Sales\\SalesWebMvc\\src\\Sales.Business\\Sales.Business.csproj",
         "projectName": "Sales.Business",
-        "projectPath": "F:\\Programação\\Sales\\Sales\\SalesWebMvc\\Sales.Business\\Sales.Business.csproj",
+        "projectPath": "F:\\Programação\\Sales\\Sales\\SalesWebMvc\\src\\Sales.Business\\Sales.Business.csproj",
         "packagesPath": "C:\\Users\\Iuri\\.nuget\\packages\\",
-        "outputPath": "F:\\Programação\\Sales\\Sales\\SalesWebMvc\\Sales.Business\\obj\\",
+        "outputPath": "F:\\Programação\\Sales\\Sales\\SalesWebMvc\\src\\Sales.Business\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -62,14 +62,14 @@
         }
       }
     },
-    "F:\\Programação\\Sales\\Sales\\SalesWebMvc\\Sales.Data\\Sales.Data.csproj": {
+    "F:\\Programação\\Sales\\Sales\\SalesWebMvc\\src\\Sales.Data\\Sales.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Programação\\Sales\\Sales\\SalesWebMvc\\Sales.Data\\Sales.Data.csproj",
+        "projectUniqueName": "F:\\Programação\\Sales\\Sales\\SalesWebMvc\\src\\Sales.Data\\Sales.Data.csproj",
         "projectName": "Sales.Data",
-        "projectPath": "F:\\Programação\\Sales\\Sales\\SalesWebMvc\\Sales.Data\\Sales.Data.csproj",
+        "projectPath": "F:\\Programação\\Sales\\Sales\\SalesWebMvc\\src\\Sales.Data\\Sales.Data.csproj",
         "packagesPath": "C:\\Users\\Iuri\\.nuget\\packages\\",
-        "outputPath": "F:\\Programação\\Sales\\Sales\\SalesWebMvc\\Sales.Data\\obj\\",
+        "outputPath": "F:\\Programação\\Sales\\Sales\\SalesWebMvc\\src\\Sales.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -89,8 +89,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "F:\\Programação\\Sales\\Sales\\SalesWebMvc\\Sales.Business\\Sales.Business.csproj": {
-                "projectPath": "F:\\Programação\\Sales\\Sales\\SalesWebMvc\\Sales.Business\\Sales.Business.csproj"
+              "F:\\Programação\\Sales\\Sales\\SalesWebMvc\\src\\Sales.Business\\Sales.Business.csproj": {
+                "projectPath": "F:\\Programação\\Sales\\Sales\\SalesWebMvc\\src\\Sales.Business\\Sales.Business.csproj"
               }
             }
           }
