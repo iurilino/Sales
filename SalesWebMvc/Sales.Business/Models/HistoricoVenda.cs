@@ -20,7 +20,7 @@ namespace Sales.Business.Models
         public Cliente Cliente { get; set; }
         public Guid ClienteId { get; set; }
 
-        public Produto ProdutoId { get; set; }
+        public Guid ProdutoId { get; set; }
         public IEnumerable<Produto> Produtos { get; set; }
         /* EF Relations */
     }

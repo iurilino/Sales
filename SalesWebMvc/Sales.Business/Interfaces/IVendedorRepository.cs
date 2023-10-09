@@ -9,6 +9,6 @@ namespace Sales.Business.Interfaces
 {
     public interface IVendedorRepository : IRepository<Vendedor>
     {
-        Task<Vendedor> ObterClienteHistoricoVendas(Guid id);
+        Task<Vendedor> ObterVendedorHistoricoVendas(Guid id);
     }
 }

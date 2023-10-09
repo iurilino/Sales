@@ -3,7 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales.Business", "Sales.Business\Sales.Business.csproj", "{3C6A658F-072E-4A8E-B5C3-5B7A267541EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sales.Data", "Sales.Data\Sales.Data.csproj", "{5727616C-2501-411D-8BE1-3E54A55EBCA3}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3C6A658F-072E-4A8E-B5C3-5B7A267541EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C6A658F-072E-4A8E-B5C3-5B7A267541EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C6A658F-072E-4A8E-B5C3-5B7A267541EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C6A658F-072E-4A8E-B5C3-5B7A267541EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5727616C-2501-411D-8BE1-3E54A55EBCA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5727616C-2501-411D-8BE1-3E54A55EBCA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5727616C-2501-411D-8BE1-3E54A55EBCA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5727616C-2501-411D-8BE1-3E54A55EBCA3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
