@@ -18,6 +18,7 @@ namespace Sales.Business.Models
         /* EF Relations */
         public Departamento Departamento { get; set; }
         public Guid DepartamentoId { get; set; }
+        public Fornecedor Fornecedor { get; set; }
         public Guid FornecedorId { get; set; }
         /* EF Relations */
     }
