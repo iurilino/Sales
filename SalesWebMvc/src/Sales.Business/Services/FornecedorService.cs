@@ -5,9 +5,16 @@ namespace Sales.Business.Services
 {
     public class FornecedorService : IFornecedorService
     {
-        public Task Adicionar(Fornecedor fornecedor)
+        private readonly IFornecedorRepository _fornecedorRepository;
+
+        public FornecedorService(IFornecedorRepository fornecedorRepository)
         {
-            throw new NotImplementedException();
+            _fornecedorRepository = fornecedorRepository;
+        }
+
+        public async Task Adicionar(Fornecedor fornecedor)
+        {
+            await _fornecedorRepository.Adicionar(fornecedor);
         }
 
         public Task Atualizar(Fornecedor fornecedor)
@@ -17,7 +24,7 @@ namespace Sales.Business.Services
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _fornecedorRepository?.Dispose();
         }
 
         public Task Remover(Fornecedor fornecedor)
