@@ -33,9 +33,9 @@ namespace Sales.Data.Repository
         {
             return await Db.HistoricoVendas
                 .AsNoTracking()
-                .Include(c => c.ClienteId)
-                .Include(v => v.VendedorId)
-                .Include(p => p.ProdutoId)
+                .Include(c => c.Cliente)
+                .Include(v => v.Vendedor)
+                .Include(p => p.Produtos)
                 .OrderBy(h => h.Date)
                 .ToListAsync();
         }

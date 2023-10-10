@@ -1,0 +1,17 @@
+F:\Programação\Sales\Sales\SalesWebMvc\src\Sales.Data\bin\Debug\net7.0\Sales.Data.deps.json
+F:\Programação\Sales\Sales\SalesWebMvc\src\Sales.Data\bin\Debug\net7.0\Sales.Data.dll
+F:\Programação\Sales\Sales\SalesWebMvc\src\Sales.Data\bin\Debug\net7.0\Sales.Data.pdb
+F:\Programação\Sales\Sales\SalesWebMvc\src\Sales.Data\bin\Debug\net7.0\Sales.Business.dll
+F:\Programação\Sales\Sales\SalesWebMvc\src\Sales.Data\bin\Debug\net7.0\Sales.Business.pdb
+F:\Programação\Sales\Sales\SalesWebMvc\src\Sales.Data\obj\Debug\net7.0\Sales.Data.csproj.AssemblyReference.cache
+F:\Programação\Sales\Sales\SalesWebMvc\src\Sales.Data\obj\Debug\net7.0\Sales.Data.GeneratedMSBuildEditorConfig.editorconfig
+F:\Programação\Sales\Sales\SalesWebMvc\src\Sales.Data\obj\Debug\net7.0\Sales.Data.AssemblyInfoInputs.cache
+F:\Programação\Sales\Sales\SalesWebMvc\src\Sales.Data\obj\Debug\net7.0\Sales.Data.AssemblyInfo.cs
+F:\Programação\Sales\Sales\SalesWebMvc\src\Sales.Data\obj\Debug\net7.0\Sales.Data.csproj.CoreCompileInputs.cache
+F:\Programação\Sales\Sales\SalesWebMvc\src\Sales.Data\obj\Debug\net7.0\Sales.Data.csproj.CopyComplete
+F:\Programação\Sales\Sales\SalesWebMvc\src\Sales.Data\obj\Debug\net7.0\Sales.Data.dll
+F:\Programação\Sales\Sales\SalesWebMvc\src\Sales.Data\obj\Debug\net7.0\refint\Sales.Data.dll
+F:\Programação\Sales\Sales\SalesWebMvc\src\Sales.Data\obj\Debug\net7.0\Sales.Data.pdb
+F:\Programação\Sales\Sales\SalesWebMvc\src\Sales.Data\obj\Debug\net7.0\ref\Sales.Data.dll
+F:\Programação\Sales\Sales\SalesWebMvc\src\Sales.Data\bin\Debug\net7.0\Sales.Data.runtimeconfig.json
+F:\Programação\Sales\Sales\SalesWebMvc\src\Sales.Data\obj\Debug\net7.0\Sales.Data.genruntimeconfig.cache
