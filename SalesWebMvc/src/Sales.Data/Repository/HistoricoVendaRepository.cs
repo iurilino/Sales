@@ -24,19 +24,13 @@ namespace Sales.Data.Repository
             return await Buscar(h => h.VendedorId == vendedorId);
         }
 
-        public async Task<IEnumerable<HistoricoVenda>> ObterVendasProduto(Guid produtoId)
-        {
-            return await Buscar(h => h.ProdutoId == produtoId);
-        }
-
         public async Task<IEnumerable<HistoricoVenda>> ObterVendasProdutosVendedorCliente()
         {
             return await Db.HistoricoVendas
                 .AsNoTracking()
                 .Include(c => c.Cliente)
                 .Include(v => v.Vendedor)
-                .Include(p => p.Produtos)
-                .OrderBy(h => h.Date)
+                .OrderBy(h => h.DataVenda)
                 .ToListAsync();
         }
     }

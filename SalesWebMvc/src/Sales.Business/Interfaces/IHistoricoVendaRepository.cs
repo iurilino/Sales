@@ -11,8 +11,6 @@ namespace Sales.Business.Interfaces
     {
         Task<IEnumerable<HistoricoVenda>> ObterVendasProdutosVendedorCliente();
 
-        Task<IEnumerable<HistoricoVenda>> ObterVendasProduto(Guid produtoId);
-
         Task<IEnumerable<HistoricoVenda>> ObterVendasPorVendedor(Guid vendedorId);
 
         Task<IEnumerable<HistoricoVenda>> ObterVendasPorCliente(Guid clienteId);

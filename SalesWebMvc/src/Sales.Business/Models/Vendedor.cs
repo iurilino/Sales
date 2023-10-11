@@ -11,8 +11,8 @@ namespace Sales.Business.Models
         public string Nome { get; set; }
         public string Email { get; set; }
         public string Documento { get; set; }
-        public DateTime BirthDate { get; set; }
-        public double BaseSalary { get; set; }
+        public DateTime DataNascimento { get; set; }
+        public double SalarioBase { get; set; }
         public bool Ativo { get; set; }
 
         /* EF Relations */

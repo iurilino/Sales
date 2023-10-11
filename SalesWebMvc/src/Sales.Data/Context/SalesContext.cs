@@ -11,6 +11,7 @@ namespace Sales.Data.Context
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Departamento> Departamentos { get; set; }
         public DbSet<Fornecedor> Fornecedores { get; set; }
+        public DbSet<ItemVenda> ItemVenda { get; set; }
         public DbSet<HistoricoVenda> HistoricoVendas { get; set; }
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Vendedor> Vendedores { get; set; }

@@ -8,8 +8,8 @@ namespace Sales.Business.Models
 {
     public class HistoricoVenda : Entity
     {
-        public DateTime Date { get; set; }
-        public double Quantidade { get; set; }
+        public DateTime DataVenda { get; set; }
+        public decimal ValorVenda { get; set; }
         public VendaStatus Status { get; set; }
 
 
@@ -20,8 +20,7 @@ namespace Sales.Business.Models
         public Cliente Cliente { get; set; }
         public Guid ClienteId { get; set; }
 
-        public Guid ProdutoId { get; set; }
-        public IEnumerable<Produto> Produtos { get; set; }
+        public IEnumerable<ItemVenda> ItensVendas { get; set; }
         /* EF Relations */
     }
 }
