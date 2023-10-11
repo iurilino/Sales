@@ -26,6 +26,18 @@ namespace Sales.App.Controllers
             return View(_mapper.Map<IEnumerable<FornecedorViewModel>> (await _fornecedorRepository.ObterTodos()));
         }
 
+        public async Task<IActionResult> Details(Guid id)
+        {
+
+            var fornecedorViewModel = await ObterFornecedorProdutos(id);
+            if (fornecedorViewModel == null)
+            {
+                return NotFound();
+            }
+
+            return View(fornecedorViewModel);
+        }
+
         public IActionResult Create()
         {
             return View();
@@ -43,7 +55,55 @@ namespace Sales.App.Controllers
             return RedirectToAction("Index");
         }
 
+        public async Task<IActionResult> Edit(Guid id)
+        {
+            var fornecedorViewModel = await ObterFornecedorProdutos(id);
 
+            if (fornecedorViewModel== null)
+            {
+                return NotFound();
+            }
+
+            return View(fornecedorViewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(Guid id, FornecedorViewModel fornecedorViewModel)
+        {
+            if (id != fornecedorViewModel.Id) return NotFound();
+            if (!ModelState.IsValid) return View(fornecedorViewModel);
+
+            var fornecedor = _mapper.Map<Fornecedor>(fornecedorViewModel);
+            await _fornecedorService.Atualizar(fornecedor);
+
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var fornecedorViewModel = await ObterFornecedorProdutos(id);
+
+            if (fornecedorViewModel == null)
+            {
+                return NotFound();
+            }
+
+            return View(fornecedorViewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(Guid id)
+        {
+            var fornecedorViewModel = await ObterFornecedorProdutos(id);
+
+            if (fornecedorViewModel == null) return NotFound();
+
+            await _fornecedorService.Remover(id);
+
+            return RedirectToAction("Index");
+        }
 
         private async Task<FornecedorViewModel> ObterFornecedorProdutos(Guid id)
         {

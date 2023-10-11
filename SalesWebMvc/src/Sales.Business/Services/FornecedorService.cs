@@ -17,19 +17,24 @@ namespace Sales.Business.Services
             await _fornecedorRepository.Adicionar(fornecedor);
         }
 
-        public Task Atualizar(Fornecedor fornecedor)
+        public async Task Atualizar(Fornecedor fornecedor)
         {
-            throw new NotImplementedException();
+            await _fornecedorRepository.Atualizar(fornecedor);
+        }
+
+        public async Task Remover(Guid id)
+        {
+            if (_fornecedorRepository.ObterFornecedorProdutos(id).Result.Produtos.Any())
+            {
+                throw new InvalidOperationException("Não é possível remover o fornecedor porque ele tem produtos associados.");
+            }
+
+            await _fornecedorRepository.Remover(id);
         }
 
         public void Dispose()
         {
             _fornecedorRepository?.Dispose();
-        }
-
-        public Task Remover(Fornecedor fornecedor)
-        {
-            throw new NotImplementedException();
         }
     }
 }

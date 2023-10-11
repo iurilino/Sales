@@ -6,6 +6,6 @@ namespace Sales.Business.Interfaces
     {
         Task Adicionar(Fornecedor fornecedor);
         Task Atualizar(Fornecedor fornecedor);
-        Task Remover(Fornecedor fornecedor);
+        Task Remover(Guid id);
     }
 }

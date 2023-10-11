@@ -16,14 +16,14 @@ namespace Sales.Data.Repository
 
         public async Task<IEnumerable<ItemVenda>> ObterVendasProduto(Guid produtoId)
         {
-            return await Buscar(p => p.ProdutoId == produtoId);
+            return await Buscar(i => i.ProdutoId == produtoId);
         }
 
         public async Task<IEnumerable<ItemVenda>> ObterVendasProdutos()
         {
             return await Db.ItemVenda
                 .AsNoTracking()
-                .Include(i => i.Produto)
+                .Include(p => p.Produto)
                 .ToListAsync();
         }
     }
