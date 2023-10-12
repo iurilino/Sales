@@ -24,6 +24,6 @@ namespace Sales.App.ViewModels
 
         ///* EF Relations*/
 
-        //public IEnumerable<ProdutoViewModel> Produtos { get; set; }
+        public IEnumerable<ProdutoViewModel> Produtos { get; set; }
     }
 }

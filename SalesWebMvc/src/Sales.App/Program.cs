@@ -17,6 +17,8 @@ builder.Services.AddScoped<SalesContext>();
 builder.Services.AddScoped<SeedingService>();
 builder.Services.AddScoped<IFornecedorRepository, FornecedorRepository>();
 builder.Services.AddScoped<IFornecedorService, FornecedorService>();
+builder.Services.AddScoped<IDepartamentoRepository, DepartamentoRepository>();
+builder.Services.AddScoped<IDepartamentoService, DepartamentoService>();
 builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();

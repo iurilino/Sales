@@ -20,12 +20,12 @@ namespace Sales.Business.Services
             throw new NotImplementedException();
         }
 
-        public void Dispose()
+        public Task Remover(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public Task Remover(Vendedor vendedor)
+        public void Dispose()
         {
             throw new NotImplementedException();
         }

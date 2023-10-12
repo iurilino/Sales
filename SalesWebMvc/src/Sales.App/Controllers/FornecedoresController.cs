@@ -92,7 +92,7 @@ namespace Sales.App.Controllers
             return View(fornecedorViewModel);
         }
 
-        [HttpPost]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {

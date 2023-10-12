@@ -5,24 +5,35 @@ namespace Sales.Business.Services
 {
     public class ClienteService : IClienteService
     {
-        public Task Adicionar(Cliente cliente)
+        private readonly IClienteRepository _clienteRepository;
+
+        public ClienteService(IClienteRepository clienteRepository)
         {
-            throw new NotImplementedException();
+            _clienteRepository = clienteRepository;
         }
 
-        public Task Atualizar(Cliente cliente)
+        public async Task Adicionar(Cliente cliente)
         {
-            throw new NotImplementedException();
+            _clienteRepository.Adicionar(cliente);
         }
 
+        public async Task Atualizar(Cliente cliente)
+        {
+            _clienteRepository.Atualizar(cliente);
+        }
+
+        public async Task Remover(Guid id)
+        {
+            if (_clienteRepository.ObterClienteHistoricoVendas(id).Result.HistoricoVendas.Any())
+            {
+                throw new InvalidOperationException("Não é possível remover esse cliente porque ele tem vendas associadas.");
+            }
+
+            await _clienteRepository.Remover(id);
+        }
         public void Dispose()
         {
-            throw new NotImplementedException();
-        }
-
-        public Task Remover(Cliente cliente)
-        {
-            throw new NotImplementedException();
+            _clienteRepository?.Dispose();
         }
     }
 }

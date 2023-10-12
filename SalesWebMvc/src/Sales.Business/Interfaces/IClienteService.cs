@@ -11,6 +11,6 @@ namespace Sales.Business.Interfaces
     {
         Task Adicionar(Cliente cliente);
         Task Atualizar(Cliente cliente);
-        Task Remover(Cliente cliente);
+        Task Remover(Guid id);
     }
 }

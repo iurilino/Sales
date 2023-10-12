@@ -11,6 +11,6 @@ namespace Sales.Business.Interfaces
     {
         Task Adicionar(Departamento departamento);
         Task Atualizar(Departamento departamento);
-        Task Remover(Departamento departamento);
+        Task Remover(Guid id);
     }
 }

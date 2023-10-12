@@ -5,24 +5,35 @@ namespace Sales.Business.Services
 {
     public class DepartamentoService : IDepartamentoService
     {
-        public Task Adicionar(Departamento departamento)
+        private readonly IDepartamentoRepository _departamentoRepository;
+
+        public DepartamentoService(IDepartamentoRepository departamentoRepository)
         {
-            throw new NotImplementedException();
+            _departamentoRepository = departamentoRepository;
         }
 
-        public Task Atualizar(Departamento departamento)
+        public async Task Adicionar(Departamento departamento)
         {
-            throw new NotImplementedException();
+            await _departamentoRepository.Adicionar(departamento);
         }
 
+        public async Task Atualizar(Departamento departamento)
+        {
+            await _departamentoRepository.Atualizar(departamento);
+        }
+
+        public async Task Remover(Guid id)
+        {
+            if (_departamentoRepository.ObterDepartamentoProdutos(id).Result.Produtos.Any())
+            {
+                throw new InvalidOperationException("Não é possível remover o departamento porque ele tem produtos associados.");
+            }
+
+            await _departamentoRepository.Remover(id);
+        }
         public void Dispose()
         {
-            throw new NotImplementedException();
-        }
-
-        public Task Remover(Departamento departamento)
-        {
-            throw new NotImplementedException();
+            _departamentoRepository?.Dispose();
         }
     }
 }
