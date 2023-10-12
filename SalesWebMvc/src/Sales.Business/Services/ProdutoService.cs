@@ -5,24 +5,35 @@ namespace Sales.Business.Services
 {
     public class ProdutoService : IProdutoService
     {
-        public Task Adicionar(Produto produto)
+        private readonly IProdutoRepository _produtoRepository;
+
+        public ProdutoService(IProdutoRepository produtoRepository)
         {
-            throw new NotImplementedException();
+            _produtoRepository = produtoRepository;
+        }
+        public async Task Adicionar(Produto produto)
+        {
+           await _produtoRepository.Adicionar(produto);
         }
 
-        public Task Atualizar(Produto produto)
+        public async Task Atualizar(Produto produto)
         {
-            throw new NotImplementedException();
+            await _produtoRepository.Atualizar(produto);
+        }
+
+        public async Task Remover(Guid id)
+        {
+            if (_produtoRepository.ObterProdutoHistoricoVendas(id).Result.ItemVendas.Any())
+            {
+                throw new InvalidOperationException("Não é possível remover esse produto porque ele tem vendas associadas.");
+            }
+
+            await _produtoRepository.Remover(id);   
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
-        }
-
-        public Task Remover(Guid id)
-        {
-            throw new NotImplementedException();
+            _produtoRepository?.Dispose();
         }
     }
 }

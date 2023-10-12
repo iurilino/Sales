@@ -1,7 +1,6 @@
 F:\Programação\Sales\Sales\SalesWebMvc\src\Sales.Business\bin\Debug\net7.0\Sales.Business.deps.json
 F:\Programação\Sales\Sales\SalesWebMvc\src\Sales.Business\bin\Debug\net7.0\Sales.Business.dll
 F:\Programação\Sales\Sales\SalesWebMvc\src\Sales.Business\bin\Debug\net7.0\Sales.Business.pdb
-F:\Programação\Sales\Sales\SalesWebMvc\src\Sales.Business\obj\Debug\net7.0\Sales.Business.csproj.AssemblyReference.cache
 F:\Programação\Sales\Sales\SalesWebMvc\src\Sales.Business\obj\Debug\net7.0\Sales.Business.GeneratedMSBuildEditorConfig.editorconfig
 F:\Programação\Sales\Sales\SalesWebMvc\src\Sales.Business\obj\Debug\net7.0\Sales.Business.AssemblyInfoInputs.cache
 F:\Programação\Sales\Sales\SalesWebMvc\src\Sales.Business\obj\Debug\net7.0\Sales.Business.AssemblyInfo.cs

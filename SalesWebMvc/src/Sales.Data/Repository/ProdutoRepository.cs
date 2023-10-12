@@ -23,12 +23,20 @@ namespace Sales.Data.Repository
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
 
+        public async Task<Produto> ObterProdutoHistoricoVendas(Guid id)
+        {
+            return await Db.Produtos
+                .AsNoTracking()
+                .Include(v => v.ItemVendas)
+                .FirstOrDefaultAsync(p => p.Id == id);
+        }
+
         public async Task<IEnumerable<Produto>> ObterProdutosFornecedoresDepartamento()
         {
             return await Db.Produtos
                 .AsNoTracking()
                 .Include(f => f.Fornecedor)
-                .Include(d => d.Departamento)
+                .Include(d => d.Departamento)                
                 .OrderBy(p => p.Nome)
                 .ToListAsync();
         }

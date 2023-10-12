@@ -14,12 +14,12 @@ namespace Sales.Business.Services
 
         public async Task Adicionar(Cliente cliente)
         {
-            _clienteRepository.Adicionar(cliente);
+            await _clienteRepository.Adicionar(cliente);
         }
 
         public async Task Atualizar(Cliente cliente)
         {
-            _clienteRepository.Atualizar(cliente);
+            await _clienteRepository.Atualizar(cliente);
         }
 
         public async Task Remover(Guid id)

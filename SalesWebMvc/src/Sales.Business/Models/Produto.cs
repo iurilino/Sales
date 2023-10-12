@@ -20,6 +20,7 @@ namespace Sales.Business.Models
         public Guid DepartamentoId { get; set; }
         public Fornecedor Fornecedor { get; set; }
         public Guid FornecedorId { get; set; }
+        public IEnumerable<ItemVenda> ItemVendas { get; set; }
         /* EF Relations */
     }
 }

@@ -10,24 +10,36 @@ namespace Sales.Business.Services
 {
     public class VendedorService : IVendedorService
     {
-        public Task Adicionar(Vendedor vendedor)
+        private readonly IVendedorRepository _vendedorRepository;
+
+        public VendedorService(IVendedorRepository vendedorRepository)
         {
-            throw new NotImplementedException();
+            _vendedorRepository = vendedorRepository;
         }
 
-        public Task Atualizar(Vendedor vendedor)
+        public async Task Adicionar(Vendedor vendedor)
         {
-            throw new NotImplementedException();
+            await _vendedorRepository.Adicionar(vendedor);
         }
 
-        public Task Remover(Guid id)
+        public async Task Atualizar(Vendedor vendedor)
         {
-            throw new NotImplementedException();
+            await _vendedorRepository.Atualizar(vendedor);
+        }
+
+        public async Task Remover(Guid id)
+        {
+            if (_vendedorRepository.ObterVendedorHistoricoVendas(id).Result.HistoricoVendas.Any())
+            {
+                throw new InvalidOperationException("Não é possível remover esse vendedor porque ele tem vendas associadas.");
+            }
+
+            await _vendedorRepository.Remover(id);
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _vendedorRepository?.Dispose();
         }
     }
 }

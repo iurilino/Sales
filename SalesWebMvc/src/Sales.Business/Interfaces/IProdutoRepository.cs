@@ -10,9 +10,14 @@ namespace Sales.Business.Interfaces
     public interface IProdutoRepository : IRepository<Produto>
     {
         Task<Produto> ObterProdutoFornecedorDepartamento(Guid id);
+
+        Task<Produto> ObterProdutoHistoricoVendas(Guid id);
+
         Task<IEnumerable<Produto>> ObterProdutosFornecedoresDepartamento();
+        
 
         Task<IEnumerable<Produto>> ObterProdutosPorFornecedor(Guid fornecedorId);
+
 
         Task<IEnumerable<Produto>> ObterProdutosPorDepartamento(Guid departamentoId);
     }
