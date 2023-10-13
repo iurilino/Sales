@@ -26,6 +26,7 @@ namespace Sales.Data.Repository
         public virtual async Task Atualizar(TEntity entity)
         {
             DbSet.Update(entity);
+            //Db.Entry(entity).State = EntityState.Modified;
             await SaveChanges();
         }
 
@@ -41,7 +42,7 @@ namespace Sales.Data.Repository
 
         public virtual async Task<List<TEntity>> ObterTodos()
         {
-            return await DbSet.ToListAsync();
+            return await DbSet.AsNoTracking().ToListAsync();
         }
 
         public virtual async Task Remover(Guid id)
