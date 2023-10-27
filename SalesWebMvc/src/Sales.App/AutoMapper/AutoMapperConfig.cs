@@ -13,6 +13,8 @@ namespace Sales.App.AutoMapper
             CreateMap<Vendedor, VendedorViewModel>().ReverseMap();
             CreateMap<Cliente, ClienteViewModel>().ReverseMap();
             CreateMap<Produto, ProdutoViewModel>().ReverseMap();
+            CreateMap<HistoricoVenda, VendaViewModel>().ReverseMap();
+            CreateMap<ItemVenda, ItemVendaViewModel>().ReverseMap();
         }
     }
 }

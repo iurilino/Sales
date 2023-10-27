@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Sales.App.Services;
 using Sales.App.ViewModels;
 using Sales.Business.Interfaces;
 using Sales.Business.Models;
@@ -13,27 +14,30 @@ namespace Sales.App.Controllers
         private readonly IProdutoService _produtoService;
         private readonly IFornecedorRepository _fornecedorRepository;
         private readonly IDepartamentoRepository _departamentoRepository;
+        private readonly CarrinhoService _carrinhoService;
         private readonly IMapper _mapper;
 
         public ProdutosController(IProdutoRepository produtoRepository,
-                                  IProdutoService produtoService,                                  
+                                  IProdutoService produtoService,
                                   IDepartamentoRepository departamentoRepository,
                                   IFornecedorRepository fornecedorRepository,
-                                  IMapper mapper)
+                                  IMapper mapper,
+                                  CarrinhoService carrinhoService)
         {
             _produtoRepository = produtoRepository;
-            _produtoService = produtoService;            
+            _produtoService = produtoService;
             _departamentoRepository = departamentoRepository;
             _fornecedorRepository = fornecedorRepository;
             _mapper = mapper;
+            _carrinhoService = carrinhoService;
         }
 
-        public async Task<ActionResult> Index()
+        public async Task<IActionResult> Index()
         {
             return View(_mapper.Map<IEnumerable<ProdutoViewModel>> (await _produtoRepository.ObterProdutosFornecedoresDepartamento()));
         }
 
-        public async Task<ActionResult> Details(Guid id)
+        public async Task<IActionResult> Details(Guid id)
         {
             var produtoViewModel = await ObterProduto(id);
             if (produtoViewModel == null)
@@ -43,7 +47,7 @@ namespace Sales.App.Controllers
             return View(produtoViewModel);
         }
 
-        public async Task<ActionResult> Create()
+        public async Task<IActionResult> Create()
         {
             var produtoViewModel = await PopularFornecedorDepartamento(new ProdutoViewModel());
             return View(produtoViewModel);
@@ -51,7 +55,7 @@ namespace Sales.App.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(ProdutoViewModel produtoViewModel)
+        public async Task<IActionResult> Create(ProdutoViewModel produtoViewModel)
         {
             produtoViewModel = await PopularFornecedorDepartamento(produtoViewModel);
             if (!ModelState.IsValid) return View(produtoViewModel);
@@ -61,7 +65,7 @@ namespace Sales.App.Controllers
             return RedirectToAction("Index");
         }
 
-        public async Task<ActionResult> Edit(Guid id)
+        public async Task<IActionResult> Edit(Guid id)
         {
             var produtoViewModel = await ObterProduto(id);
 
@@ -75,7 +79,7 @@ namespace Sales.App.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(Guid id, ProdutoViewModel produtoViewModel)
+        public async Task<IActionResult> Edit(Guid id, ProdutoViewModel produtoViewModel)
         {
             if (id != produtoViewModel.Id) return NotFound();
 
@@ -94,7 +98,7 @@ namespace Sales.App.Controllers
             return RedirectToAction("Index");
         }
 
-        public async Task<ActionResult> Delete(Guid id)
+        public async Task<IActionResult> Delete(Guid id)
         {
             var produtoViewModel = await ObterProduto(id);
 
@@ -108,7 +112,7 @@ namespace Sales.App.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Delete(Guid id, ProdutoViewModel produtoViewModel)
+        public async Task<IActionResult> Delete(Guid id, ProdutoViewModel produtoViewModel)
         {
             var produto = await ObterProduto(id);
 
@@ -119,6 +123,13 @@ namespace Sales.App.Controllers
 
             await _produtoService.Remover(id);
 
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult AdicionarAoCarrinho(ProdutoViewModel produto, int quantidade)
+        {
+            _carrinhoService.AdicionarItemAoCarrinho(produto, quantidade);
             return RedirectToAction("Index");
         }
 

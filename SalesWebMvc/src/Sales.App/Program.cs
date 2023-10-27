@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Sales.App.Data;
+using Sales.App.Services;
 using Sales.Business.Interfaces;
 using Sales.Business.Services;
 using Sales.Data.Context;
@@ -15,6 +16,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<SalesContext>();
 builder.Services.AddScoped<SeedingService>();
+builder.Services.AddScoped<CarrinhoService>();
 builder.Services.AddScoped<IFornecedorRepository, FornecedorRepository>();
 builder.Services.AddScoped<IFornecedorService, FornecedorService>();
 builder.Services.AddScoped<IDepartamentoRepository, DepartamentoRepository>();
@@ -27,7 +29,13 @@ builder.Services.AddScoped<IVendedorRepository, VendedorRepository>();
 builder.Services.AddScoped<IVendedorService, VendedorService>();
 builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
 builder.Services.AddScoped<IProdutoService, ProdutoService>();
+builder.Services.AddScoped<IHistoricoVendaRepository, HistoricoVendaRepository>();
+builder.Services.AddScoped<IHistoricoVendaService, HistoricoVendaService>();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddAutoMapper(typeof(Program));
+
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession();
 
 var app = builder.Build();
 
@@ -45,6 +53,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseSession();
 
 app.UseAuthorization();
 

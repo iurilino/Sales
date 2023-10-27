@@ -1,0 +1,46 @@
+﻿@model Sales.App.ViewModels.CarrinhoViewModel
+
+<h2>Carrinho de Compras</h2>
+
+<form asp-action="Create" asp-controller="Vendas">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Preço Unitário</th>
+                <th>Valor Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Itens)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Produto.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantidade)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Produto.Valor)
+                    </td>
+                    <td>
+                        @(item.Produto.Valor * item.Quantidade)
+                    </td>
+                    <td class="text-right">
+                        <a asp-action="Remover" asp-route-id="@item.Produto.Id">Remover</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="3"><strong>Total:</strong></td>
+                <td>@ViewBag.Valor</td>
+            </tr>
+        </tfoot>
+    </table>
+    <a asp-action="Create" asp-controller="Vendas" class="btn btn-success">Concluir Compra</a>
+</form>

@@ -53,6 +53,20 @@
             </dd>
         </dl>
 
+        <form asp-controller="Produtos" asp-action="AdicionarAoCarrinho" method="post">
+            <input type="hidden" asp-for="Id" name="Id" />
+            <input type="hidden" asp-for="Nome" name="Nome" />
+            <input type="hidden" asp-for="Descricao" name="Descricao" />
+            <input type="hidden" asp-for="Imagem" name="Imagem" />
+            <input type="hidden" asp-for="Valor" name="Valor" />
+            <input type="hidden" asp-for="DataCadastro" name="DataCadastro" />
+            <input type="hidden" asp-for="Ativo" name="Ativo" />
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" id="quantidade" name="quantidade" value="1" />
+            <button type="submit">Adicionar ao Carrinho</button>
+            <input type="hidden" asp-antiforgery="true" />
+        </form>
+
         <div>
             <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Editar</a>
             <a class="btn btn-info" asp-action="Index">Voltar</a>

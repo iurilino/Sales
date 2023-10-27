@@ -21,12 +21,12 @@ namespace Sales.App.Controllers
             _mapper = mapper;
         }
 
-        public async Task<ActionResult> Index()
+        public async Task<IActionResult> Index()
         {
             return View(_mapper.Map<IEnumerable<VendedorViewModel>> (await _vendedorRepository.ObterTodos()));
         }
 
-        public async Task<ActionResult> Details(Guid id)
+        public async Task<IActionResult> Details(Guid id)
         {
             var vendedorViewModel = _mapper.Map<VendedorViewModel>(await _vendedorRepository.ObterPorID(id));
             if (vendedorViewModel == null)
@@ -37,14 +37,14 @@ namespace Sales.App.Controllers
             return View(vendedorViewModel);
         }
 
-        public ActionResult Create()
+        public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(VendedorViewModel vendedorViewModel)
+        public async Task<IActionResult> Create(VendedorViewModel vendedorViewModel)
         {
             if (!ModelState.IsValid) return View(vendedorViewModel);
 
@@ -54,7 +54,7 @@ namespace Sales.App.Controllers
             return RedirectToAction("Index");
         }
 
-        public async Task<ActionResult> Edit(Guid id)
+        public async Task<IActionResult> Edit(Guid id)
         {
             var vendedorViewModel = _mapper.Map<VendedorViewModel>(await _vendedorRepository.ObterPorID(id));
 
@@ -68,7 +68,7 @@ namespace Sales.App.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(Guid id, VendedorViewModel vendedorViewModel)
+        public async Task<IActionResult> Edit(Guid id, VendedorViewModel vendedorViewModel)
         {
             if (id != vendedorViewModel.Id) return NotFound();
             if (!ModelState.IsValid) return View(vendedorViewModel);
@@ -79,7 +79,7 @@ namespace Sales.App.Controllers
             return RedirectToAction("Index");
         }
 
-        public async Task<ActionResult> Delete(Guid id)
+        public async Task<IActionResult> Delete(Guid id)
         {
             var vendedorViewModel = _mapper.Map<VendedorViewModel>(await _vendedorRepository.ObterPorID(id));
 

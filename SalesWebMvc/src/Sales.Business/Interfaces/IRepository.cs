@@ -11,6 +11,7 @@ namespace Sales.Business.Interfaces
         Task Atualizar(TEntity entity);
         Task Remover(Guid id);
         Task<IEnumerable<TEntity>> Buscar(Expression<Func<TEntity, bool>> predicate);
+        void Detach(TEntity entity);
         Task<int> SaveChanges();
     }
 }

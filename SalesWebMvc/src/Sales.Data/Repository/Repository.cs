@@ -20,6 +20,7 @@ namespace Sales.Data.Repository
         public virtual async Task Adicionar(TEntity entity)
         {
             DbSet.Add(entity);
+
             await SaveChanges();
         }
 
@@ -55,6 +56,15 @@ namespace Sales.Data.Repository
         public async Task<int> SaveChanges()
         {
             return await Db.SaveChangesAsync();
+        }
+
+        public virtual void Detach(TEntity entity)
+        {
+            DbSet.Entry(entity).State = EntityState.Detached;
+            if (DbSet.Entry(entity).State == EntityState.Detached)
+            {
+                var a = "Desatachado";
+            }
         }
 
         public void Dispose()

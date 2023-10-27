@@ -30,6 +30,8 @@ namespace Sales.Data.Repository
                 .AsNoTracking()
                 .Include(c => c.Cliente)
                 .Include(v => v.Vendedor)
+                .Include(i => i.ItensVenda)
+                    .ThenInclude(item => item.Produto)
                 .OrderBy(h => h.DataVenda)
                 .ToListAsync();
         }

@@ -24,12 +24,12 @@ namespace Sales.App.Controllers
             _mapper = mapper;
         }
 
-        public async Task<ActionResult> Index()
+        public async Task<IActionResult> Index()
         {
             return View(_mapper.Map<IEnumerable<ClienteViewModel>> (await _clienteRepository.ObterTodos()));
         }
 
-        public async Task<ActionResult> Details(Guid id)
+        public async Task<IActionResult> Details(Guid id)
         {
             
             var clienteViewModel = _mapper.Map<ClienteViewModel>(await _clienteRepository.ObterPorID(id));
@@ -41,14 +41,14 @@ namespace Sales.App.Controllers
             return View(clienteViewModel);
         }
 
-        public ActionResult Create()
+        public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(ClienteViewModel clienteViewModel)
+        public async Task<IActionResult> Create(ClienteViewModel clienteViewModel)
         {
             if (!ModelState.IsValid) return View(clienteViewModel);
 
@@ -58,7 +58,7 @@ namespace Sales.App.Controllers
             return RedirectToAction("Index");
         }
 
-        public async Task<ActionResult> Edit(Guid id)
+        public async Task<IActionResult> Edit(Guid id)
         {
             var clienteViewModel = _mapper.Map<ClienteViewModel>(await _clienteRepository.ObterPorID(id));
 
@@ -72,7 +72,7 @@ namespace Sales.App.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(Guid id, ClienteViewModel clienteViewModel)
+        public async Task<IActionResult> Edit(Guid id, ClienteViewModel clienteViewModel)
         {
             if (id != clienteViewModel.Id) return NotFound();
             if (!ModelState.IsValid) return View(clienteViewModel);
@@ -83,7 +83,7 @@ namespace Sales.App.Controllers
             return RedirectToAction("Index");
         }
 
-        public async Task<ActionResult> Delete(Guid id)
+        public async Task<IActionResult> Delete(Guid id)
         {
             var clienteViewModel = _mapper.Map<ClienteViewModel>(await _clienteRepository.ObterPorID(id));
 

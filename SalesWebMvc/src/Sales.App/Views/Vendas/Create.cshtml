@@ -1,0 +1,87 @@
+﻿@model Sales.App.ViewModels.VendaViewModel
+
+@{
+    ViewData["Title"] = "Nova Venda";
+}
+
+<h3 style="padding-top: 50px">@ViewData["Title"] </h3>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-10">
+        <form enctype="multipart/form-data" asp-action="Create">
+            <div class="form-group">
+                <label asp-for="VendedorId" class="control-label"></label>
+                <select asp-for="VendedorId" class="form-control" asp-items="@(new SelectList(Model.Vendedores, "Id", "Nome"))">
+                    <option></option>
+                </select>
+                <span asp-validation-for="VendedorId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ClienteId" class="control-label"></label>
+                <select asp-for="ClienteId" class="form-control" asp-items="@(new SelectList(Model.Clientes, "Id", "Nome"))">
+                    <option></option>
+                </select>
+                <span asp-validation-for="ClienteId" class="text-danger"></span>
+            </div>
+
+            <h4>Produtos</h4>
+            @for (int i = 0; i < Model.ItensVenda.Count(); i++)
+            {
+                <div class="form-group">
+                    <label asp-for="@Model.ItensVenda[i].Produto.Nome" class="control-label"></label>
+                    <p>@Model.ItensVenda[i].Produto.Nome</p>
+                    <input asp-for="@Model.ItensVenda[i].Produto.Nome" type="hidden">
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="@Model.ItensVenda[i].Quantidade" class="control-label"></label>
+                    <p>@Model.ItensVenda[i].Quantidade</p>
+                    <input asp-for="@Model.ItensVenda[i].Quantidade" type="hidden">
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="@Model.ItensVenda[i].Produto.Valor" class="control-label"></label>
+                    <p>@Model.ItensVenda[i].ValorUnitario</p>
+                    <input asp-for="@Model.ItensVenda[i].ValorUnitario" type="hidden">
+                </div>
+
+                <input asp-for="@Model.ItensVenda[i].Produto.Id" type="hidden">
+            }
+
+            <div class="form-group">
+                <input type="submit" value="Cadastrar" class="btn btn-primary" />
+                <a class="btn btn-info" asp-action="Index">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@* @section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+} *@
+
+@* @for (int i = 0; i < Model.ItensVenda.Count(); i++)
+{
+    <div class="form-group">
+        <label asp-for="@Model.ItensVenda[i].Produto.Nome" class="control-label"></label>
+        <p>@Model.ItensVenda[i].Produto.Nome</p>
+        <input asp-for="@Model.ItensVenda[i].Produto.Nome" type="hidden">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.ItensVenda[i].Quantidade" class="control-label"></label>
+        <p>@Model.ItensVenda[i].Quantidade</p>
+        <input asp-for="@Model.ItensVenda[i].Quantidade" type="hidden">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.ItensVenda[i].Produto.Valor" class="control-label"></label>
+        <p>@Model.ItensVenda[i].ValorUnitario</p>
+        <input asp-for="@Model.ItensVenda[i].ValorUnitario" type="hidden">
+    </div>
+} *@

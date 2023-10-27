@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Sales.Business.Interfaces
 {
-    public interface IItemVendaRepository : IRepository<ItemVenda>
+    public interface IHistoricoVendaService : IDisposable
     {
-        Task<IEnumerable<ItemVenda>> ObterVendasProdutos();
+        Task Adicionar(HistoricoVenda historicoVenda);
 
-        Task<IEnumerable<ItemVenda>> ObterVendasProduto(Guid produtoId);
+        Task Remover(Guid id);
     }
 }
