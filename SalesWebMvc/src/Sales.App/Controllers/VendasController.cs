@@ -58,7 +58,12 @@ namespace Sales.App.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(VendaViewModel vendaViewModel)
         {
-            //if (!ModelState.IsValid) return View(vendaViewModel);
+            for (int i = 0; i < vendaViewModel.ItensVenda.Count; i++)
+            {
+                ModelState.Remove($"ItensVenda[{i}].Produto.Descricao");
+            }
+
+            if (!ModelState.IsValid) return View(vendaViewModel);
 
             var venda = _mapper.Map<HistoricoVenda>(vendaViewModel);
 
@@ -72,6 +77,8 @@ namespace Sales.App.Controllers
             //}
 
             await _historicoVendaService.Adicionar(venda);
+
+            _carrinhoService.LimparCarrinho();
 
             return RedirectToAction("Index");
         }

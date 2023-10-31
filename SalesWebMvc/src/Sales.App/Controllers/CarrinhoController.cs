@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using Sales.App.Services;
 using Sales.App.ViewModels;
 using Sales.Business.Interfaces;
@@ -36,16 +37,16 @@ namespace Sales.App.Controllers
             return RedirectToAction("Index");
         }
 
-        //public async Task<IActionResult> ConcluirCompra()
-        //{
-        //    var carrinho = _carrinhoService.ObterCarrinhoDaSessao();
+        public IActionResult ConcluirCompra()
+        {
+            var carrinho = _carrinhoService.ObterCarrinhoDaSessao();
 
-        //    foreach (var item in carrinho.Itens)
-        //    {
-        //        await _itemVendaService.Adicionar(_mapper.Map<ItemVenda>(item));
-        //    }
+            if(carrinho.Itens.IsNullOrEmpty())
+            {
+                return RedirectToAction("Index");
+            }
 
-        //    return RedirectToAction("Create", "Vendas");
-        //}
+            return RedirectToAction("Create", "Vendas");
+        }
     }
 }

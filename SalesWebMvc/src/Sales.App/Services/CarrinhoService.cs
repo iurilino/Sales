@@ -49,6 +49,17 @@ namespace Sales.App.Services
             }
         }
 
+        public void LimparCarrinho()
+        {
+            var carrinho = ObterCarrinhoDaSessao();
+
+            if (carrinho.Itens != null)
+            {
+                carrinho.Itens.Clear();
+                AtualizarCarrinhoNaSessao(carrinho);
+            }
+        }
+
         public CarrinhoViewModel ObterCarrinhoDaSessao()
         {
             var session = _httpContextAccessor.HttpContext.Session;
