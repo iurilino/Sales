@@ -17,6 +17,9 @@ namespace Sales.App.ViewModels
         [StringLength(11, ErrorMessage = "O campo {0} precisa ter entre {1}")]
         public string Documento { get; set; }
 
+        [Required(ErrorMessage = "O campo {0} é obrigatório!")]
+        [EmailAddress(ErrorMessage = "Entre com e-mail valido")]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
         [DisplayName("Tipo")]

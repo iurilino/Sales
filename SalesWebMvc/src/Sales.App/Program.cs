@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Sales.App.Configurations;
 using Sales.App.Data;
 using Sales.App.Services;
 using Sales.Business.Interfaces;
@@ -14,24 +15,8 @@ builder.Services.AddDbContext<SalesContext>(options =>
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddScoped<SalesContext>();
-builder.Services.AddScoped<SeedingService>();
-builder.Services.AddScoped<CarrinhoService>();
-builder.Services.AddScoped<IFornecedorRepository, FornecedorRepository>();
-builder.Services.AddScoped<IFornecedorService, FornecedorService>();
-builder.Services.AddScoped<IDepartamentoRepository, DepartamentoRepository>();
-builder.Services.AddScoped<IDepartamentoService, DepartamentoService>();
-builder.Services.AddScoped<IVendedorRepository, VendedorRepository>();
-builder.Services.AddScoped<IVendedorService, VendedorService>();
-builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
-builder.Services.AddScoped<IClienteService, ClienteService>();
-builder.Services.AddScoped<IVendedorRepository, VendedorRepository>();
-builder.Services.AddScoped<IVendedorService, VendedorService>();
-builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
-builder.Services.AddScoped<IProdutoService, ProdutoService>();
-builder.Services.AddScoped<IHistoricoVendaRepository, HistoricoVendaRepository>();
-builder.Services.AddScoped<IHistoricoVendaService, HistoricoVendaService>();
-builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.ResolveDependencies();
+
 builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddDistributedMemoryCache();

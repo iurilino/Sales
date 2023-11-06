@@ -7,7 +7,11 @@ namespace Sales.App.ViewModels
     {
         [Key]
         public Guid Id { get; set; }
+
+        [Required(ErrorMessage = "O campo {0} é obrigatório!")]
         public int Quantidade { get; set; }
+
+        [Required(ErrorMessage = "O campo {0} é obrigatório!")]
         public decimal ValorUnitario { get; set; }
 
 
