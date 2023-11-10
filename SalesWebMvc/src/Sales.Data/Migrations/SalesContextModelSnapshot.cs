@@ -17,7 +17,7 @@ namespace Sales.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.11")
+                .HasAnnotation("ProductVersion", "7.0.12")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -112,14 +112,9 @@ namespace Sales.Data.Migrations
                     b.Property<decimal>("ValorVenda")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<Guid>("VendedorId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ClienteId");
-
-                    b.HasIndex("VendedorId");
 
                     b.ToTable("HistoricoVendas");
                 });
@@ -193,38 +188,6 @@ namespace Sales.Data.Migrations
                     b.ToTable("Produtos");
                 });
 
-            modelBuilder.Entity("Sales.Business.Models.Vendedor", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("Ativo")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("DataNascimento")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Documento")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("SalarioBase")
-                        .HasColumnType("float");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Vendedores");
-                });
-
             modelBuilder.Entity("Sales.Business.Models.HistoricoVenda", b =>
                 {
                     b.HasOne("Sales.Business.Models.Cliente", "Cliente")
@@ -232,25 +195,18 @@ namespace Sales.Data.Migrations
                         .HasForeignKey("ClienteId")
                         .IsRequired();
 
-                    b.HasOne("Sales.Business.Models.Vendedor", "Vendedor")
-                        .WithMany("HistoricoVendas")
-                        .HasForeignKey("VendedorId")
-                        .IsRequired();
-
                     b.Navigation("Cliente");
-
-                    b.Navigation("Vendedor");
                 });
 
             modelBuilder.Entity("Sales.Business.Models.ItemVenda", b =>
                 {
                     b.HasOne("Sales.Business.Models.HistoricoVenda", "HistoricoVenda")
-                        .WithMany("ItensVendas")
+                        .WithMany("ItensVenda")
                         .HasForeignKey("HistoricoVendaId")
                         .IsRequired();
 
                     b.HasOne("Sales.Business.Models.Produto", "Produto")
-                        .WithMany()
+                        .WithMany("ItemVendas")
                         .HasForeignKey("ProdutoId")
                         .IsRequired();
 
@@ -293,12 +249,12 @@ namespace Sales.Data.Migrations
 
             modelBuilder.Entity("Sales.Business.Models.HistoricoVenda", b =>
                 {
-                    b.Navigation("ItensVendas");
+                    b.Navigation("ItensVenda");
                 });
 
-            modelBuilder.Entity("Sales.Business.Models.Vendedor", b =>
+            modelBuilder.Entity("Sales.Business.Models.Produto", b =>
                 {
-                    b.Navigation("HistoricoVendas");
+                    b.Navigation("ItemVendas");
                 });
 #pragma warning restore 612, 618
         }

@@ -18,10 +18,6 @@ namespace Sales.App.ViewModels
 
 
         /* EF Relations */
-        public VendedorViewModel Vendedor { get; set; }
-        [DisplayName("Vendedor")]
-        public Guid VendedorId { get; set; }
-        public IEnumerable<VendedorViewModel> Vendedores { get; set; }
 
         [DisplayName("Cliente")]
         public ClienteViewModel Cliente { get; set; }

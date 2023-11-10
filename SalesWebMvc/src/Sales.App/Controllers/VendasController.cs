@@ -12,7 +12,6 @@ namespace Sales.App.Controllers
     {
         private readonly IHistoricoVendaRepository _historicoVendaRepository;
         private readonly IHistoricoVendaService _historicoVendaService;
-        private readonly IVendedorRepository _vendedorRepository;
         private readonly IClienteRepository _clienteRepository;
         private readonly IProdutoRepository _produtoRepository;
         private readonly CarrinhoService _carrinhoService;
@@ -23,7 +22,6 @@ namespace Sales.App.Controllers
         public VendasController(IHistoricoVendaRepository historicoVendaRepository,
                                 IHistoricoVendaService historicoVendaService,                                
                                 IClienteRepository clienteRepository,
-                                IVendedorRepository vendedorRepository,
                                 IProdutoRepository produtoRepository,
                                 CarrinhoService carrinhoService,
                                 IMapper mapper)
@@ -31,7 +29,6 @@ namespace Sales.App.Controllers
             _historicoVendaRepository = historicoVendaRepository;
             _historicoVendaService = historicoVendaService;
             _clienteRepository = clienteRepository;
-            _vendedorRepository = vendedorRepository;
             _produtoRepository = produtoRepository;
             _carrinhoService = carrinhoService;
             _mapper = mapper;            
@@ -85,7 +82,6 @@ namespace Sales.App.Controllers
 
         private async Task<VendaViewModel> PopularVendedorCliente(VendaViewModel venda)
         {
-            venda.Vendedores = _mapper.Map<IEnumerable<VendedorViewModel>>(await _vendedorRepository.ObterTodos());
             venda.Clientes = _mapper.Map<IEnumerable<ClienteViewModel>>(await _clienteRepository.ObterTodos());
 
             return venda;

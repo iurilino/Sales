@@ -14,17 +14,11 @@ namespace Sales.Data.Repository
             return await Buscar(h => h.ClienteId == clienteId);
         }
 
-        public async Task<IEnumerable<HistoricoVenda>> ObterVendasPorVendedor(Guid vendedorId)
-        {
-            return await Buscar(h => h.VendedorId == vendedorId);
-        }
-
         public async Task<IEnumerable<HistoricoVenda>> ObterVendasProdutosVendedorCliente()
         {
             return await Db.HistoricoVendas
                 .AsNoTracking()
                 .Include(c => c.Cliente)
-                .Include(v => v.Vendedor)
                 .Include(i => i.ItensVenda)
                     .ThenInclude(item => item.Produto)
                 .OrderBy(h => h.DataVenda)

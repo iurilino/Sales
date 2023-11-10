@@ -128,26 +128,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVuZGFzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Programação/Sales/Sales/SalesWebMvc/src/Sales.App/Views/Vendedores/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVuZGVkb3Jlc1xDcmVhdGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[F:/Programação/Sales/Sales/SalesWebMvc/src/Sales.App/Views/Vendedores/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVuZGVkb3Jlc1xEZWxldGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[F:/Programação/Sales/Sales/SalesWebMvc/src/Sales.App/Views/Vendedores/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVuZGVkb3Jlc1xEZXRhaWxzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[F:/Programação/Sales/Sales/SalesWebMvc/src/Sales.App/Views/Vendedores/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVuZGVkb3Jlc1xFZGl0LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[F:/Programação/Sales/Sales/SalesWebMvc/src/Sales.App/Views/Vendedores/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmVuZGVkb3Jlc1xJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [F:/Programação/Sales/Sales/SalesWebMvc/src/Sales.App/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

@@ -14,7 +14,6 @@ namespace Sales.Data.Context
         public DbSet<ItemVenda> ItemVenda { get; set; }
         public DbSet<HistoricoVenda> HistoricoVendas { get; set; }
         public DbSet<Produto> Produtos { get; set; }
-        public DbSet<Vendedor> Vendedores { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

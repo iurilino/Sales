@@ -18,12 +18,8 @@ namespace Sales.App.Configurations
             services.AddScoped<IFornecedorService, FornecedorService>();
             services.AddScoped<IDepartamentoRepository, DepartamentoRepository>();
             services.AddScoped<IDepartamentoService, DepartamentoService>();
-            services.AddScoped<IVendedorRepository, VendedorRepository>();
-            services.AddScoped<IVendedorService, VendedorService>();
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<IClienteService, ClienteService>();
-            services.AddScoped<IVendedorRepository, VendedorRepository>();
-            services.AddScoped<IVendedorService, VendedorService>();
             services.AddScoped<IProdutoRepository, ProdutoRepository>();
             services.AddScoped<IProdutoService, ProdutoService>();
             services.AddScoped<IHistoricoVendaRepository, HistoricoVendaRepository>();

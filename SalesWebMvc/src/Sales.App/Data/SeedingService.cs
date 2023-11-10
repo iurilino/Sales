@@ -22,9 +22,6 @@ namespace Sales.App.Data
             Fornecedor f1 = new Fornecedor { Id = Guid.NewGuid(), Documento = "05793192530", Nome = "Iuri", Ativo = true, Tipo = 0 };
             Fornecedor f2 = new Fornecedor { Id = Guid.NewGuid(), Documento = "99798479", Nome = "Igor", Ativo = true, Tipo = 0 };
 
-            Vendedor v1 = new Vendedor { Id = Guid.NewGuid(), Nome = "Bob", Documento = "123", DataNascimento = new DateTime(1998, 4, 21), Email = "bob@gmail.com", Ativo = true, SalarioBase = 2500 };
-            Vendedor v2 = new Vendedor { Id = Guid.NewGuid(), Nome = "Maria", Documento = "123", DataNascimento = new DateTime(1990, 4, 21), Email = "maria@gmail.com", Ativo = true, SalarioBase = 3500 };
-
             Departamento d1 = new Departamento { Id = Guid.NewGuid(), Ativo = true, Nome = "Livros" };
             Departamento d2 = new Departamento { Id = Guid.NewGuid(), Ativo = true, Nome = "Computadores" };
             Departamento d3 = new Departamento { Id = Guid.NewGuid(), Ativo = true, Nome = "Ferramentas" };
@@ -111,7 +108,6 @@ namespace Sales.App.Data
                 DataVenda = DateTime.Now,
                 Status = VendaStatus.Aprovada,
                 Cliente = c1,
-                Vendedor = v1,
                 ValorVenda = 5180
             };
 
@@ -121,7 +117,6 @@ namespace Sales.App.Data
                 DataVenda = DateTime.Now,
                 Status = VendaStatus.Aprovada,
                 Cliente = c2,
-                Vendedor = v2,
                 ValorVenda = 15480
             };
 
@@ -180,7 +175,6 @@ namespace Sales.App.Data
             };
 
             _context.Fornecedores.AddRange(f1, f2);
-            _context.Vendedores.AddRange(v1, v2);
             _context.Clientes.AddRange(c1, c2);
             _context.Departamentos.AddRange(d1, d2);
             _context.Produtos.AddRange(p1, p2, p3, p4, p5, p6);
