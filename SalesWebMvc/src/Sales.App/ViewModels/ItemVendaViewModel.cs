@@ -9,6 +9,7 @@ namespace Sales.App.ViewModels
         public Guid Id { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório!")]
+        [Range(1, int.MaxValue, ErrorMessage = "O valor deve ser maior que zero.")]
         public int Quantidade { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório!")]

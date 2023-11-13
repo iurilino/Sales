@@ -82,6 +82,20 @@ namespace Sales.App.Services
             session.SetString(CarrinhoSessionKey, carrinhoJson);
         }
 
+        public void AtualizarQuantidade(Guid produtoId, int quantidade)
+        {
+            var carrinho = ObterCarrinhoDaSessao();
+
+            var produto = carrinho.Itens.FirstOrDefault(i => i.Produto.Id == produtoId);
+
+            if (produto != null)
+            {
+                produto.Quantidade = quantidade;
+            }
+
+            AtualizarCarrinhoNaSessao(carrinho);
+        }
+
         public decimal ValorTotal()
         {
             var carrinho = ObterCarrinhoDaSessao();

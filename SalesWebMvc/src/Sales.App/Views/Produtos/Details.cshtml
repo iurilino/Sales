@@ -53,7 +53,7 @@
             </dd>
         </dl>
 
-        <form asp-controller="Produtos" asp-action="AdicionarAoCarrinho" method="post">
+        <form asp-controller="Carrinho" asp-action="AdicionarAoCarrinho" method="post">
             <input type="hidden" asp-for="Id" name="Id" />
             <input type="hidden" asp-for="Nome" name="Nome" />
             <input type="hidden" asp-for="Descricao" name="Descricao" />
@@ -64,6 +64,12 @@
             <label for="quantidade">Quantidade:</label>
             <input type="number" id="quantidade" name="quantidade" value="1" />
             <button type="submit">Adicionar ao Carrinho</button>
+
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <div class="text-danger">@TempData["ErrorMessage"]</div>
+            }
+
             <input type="hidden" asp-antiforgery="true" />
         </form>
 

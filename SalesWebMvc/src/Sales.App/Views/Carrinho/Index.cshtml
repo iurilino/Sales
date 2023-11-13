@@ -1,4 +1,5 @@
-﻿@model Sales.App.ViewModels.CarrinhoViewModel
+﻿<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+@model Sales.App.ViewModels.CarrinhoViewModel
 
 <h2>Carrinho de Compras</h2>
 
@@ -20,7 +21,10 @@
                         @Html.DisplayFor(modelItem => item.Produto.Nome)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Quantidade)
+                        <label for="quantidade_@item.Produto.Id">Quantidade:</label>
+                        <input type="number" id="quantidade_@item.Produto.Id" name="quantidade" value="@item.Quantidade" />
+                        <button type="button" class="atualizarQuantidadeBtn" data-produtoid="@item.Produto.Id">Atualizar Quantidade</button>
+                        <div class="statusMessage" data-produtoid="@item.Produto.Id"></div>
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Produto.Valor)
@@ -44,3 +48,49 @@
     </table>
     <a asp-action="ConcluirCompra" class="btn btn-success">Concluir Compra</a>
 </form>
+
+<script>
+    $(document).ready(function () {
+        $('.atualizarQuantidadeBtn').click(function () {
+            // Obtenha os valores necessários (produtoId, novaQuantidade) da página conforme necessário
+            var novaQuantidade = $('#quantidade_' + $(this).data('produtoid')).val();
+            var produtoId = $(this).data('produtoid');
+
+            $.ajax({
+                type: 'POST',
+                url: '/Carrinho/AtualizarQuantidade',
+                data: { produtoId: produtoId, novaQuantidade: novaQuantidade },
+                success: function (result) {
+                    if (result.success) {
+                        // Armazenar a mensagem no localStorage
+                        localStorage.setItem('statusMessage_' + produtoId, result.message);
+
+                        // Recarregar a página após o sucesso
+                        location.reload();
+                    } else {
+                        // Armazenar a mensagem no localStorage
+                        localStorage.setItem('statusMessage_' + produtoId, result.message);
+
+                        // Recarregar a página após o sucesso
+                        location.reload();
+                    }
+                },
+                error: function (error) {
+                    console.error('Erro ao atualizar a quantidade:', error);
+                }
+            });
+        });
+
+        // Recuperar a mensagem do localStorage após a recarga da página
+        $('.statusMessage').each(function () {
+            var produtoId = $(this).data('produtoid');
+            var mensagem = localStorage.getItem('statusMessage_' + produtoId);
+
+            if (mensagem) {
+                $(this).text(mensagem);
+                // Remover a mensagem do localStorage para não exibi-la novamente na próxima recarga
+                localStorage.removeItem('statusMessage_' + produtoId);
+            }
+        });
+    });
+</script>

@@ -126,13 +126,6 @@ namespace Sales.App.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
-        public IActionResult AdicionarAoCarrinho(ProdutoViewModel produto, int quantidade)
-        {
-            _carrinhoService.AdicionarItemAoCarrinho(produto, quantidade);
-            return RedirectToAction("Index");
-        }
-
         private async Task<ProdutoViewModel> ObterProduto(Guid id)
         {
             var produto = _mapper.Map<ProdutoViewModel>(await _produtoRepository.ObterProdutoFornecedorDepartamento(id));

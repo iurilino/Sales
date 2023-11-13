@@ -22,12 +22,25 @@ namespace Sales.App.Controllers
         }
 
         public IActionResult Index()
-        {
+        {           
             var carrinho = _carrinhoService.ObterCarrinhoDaSessao();
 
-            ViewBag.Valor = _carrinhoService.ValorTotal();
+            ViewBag.Valor = _carrinhoService.ValorTotal();            
 
             return View(carrinho);
+        }
+
+        [HttpPost]
+        public IActionResult AdicionarAoCarrinho(ProdutoViewModel produto, int quantidade)
+        {
+            if (quantidade <= 0)
+            {
+                TempData["ErrorMessage"] = "A quantidade deve ser maior que zero.";
+                return RedirectToAction("Details", "Produtos",new { id = produto.Id });
+            }
+
+            _carrinhoService.AdicionarItemAoCarrinho(produto, quantidade);
+            return RedirectToAction("Index", "Produtos");
         }
 
         public IActionResult Remover(Guid id)
@@ -47,6 +60,20 @@ namespace Sales.App.Controllers
             }
 
             return RedirectToAction("Create", "Vendas");
+        }
+
+        [HttpPost]
+        public IActionResult AtualizarQuantidade(Guid produtoId, int novaQuantidade)
+        {
+            if (novaQuantidade <= 0)
+            {
+                return Json(new { success = false, message = "Quantidade não pode ser menor do que 0!" });
+            }
+            _carrinhoService.AtualizarQuantidade(produtoId, novaQuantidade);
+
+            var url = Url.Action("Index", "Carrinho");
+
+            return Json(new { success = true, url, message = "Quantidade atualizada com sucesso!" });
         }
     }
 }
