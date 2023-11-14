@@ -1,6 +1,7 @@
 ﻿using Sales.App.Data;
 using Sales.App.Services;
 using Sales.Business.Interfaces;
+using Sales.Business.Notificacoes;
 using Sales.Business.Services;
 using Sales.Data.Context;
 using Sales.Data.Repository;
@@ -25,6 +26,8 @@ namespace Sales.App.Configurations
             services.AddScoped<IHistoricoVendaRepository, HistoricoVendaRepository>();
             services.AddScoped<IHistoricoVendaService, HistoricoVendaService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.AddScoped<INotificador, Notificador>();
 
             return services;
         }

@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "mrbY4kXYNOstPx4s+5KQ3vN1aUpc6vjgGRx+XSCE1HNvqrXjStwonnPedyFXXtmPPs+ZUJs8no+Z4bR2tXQ4fw==",
+  "dgSpecHash": "2cwh1+yIFqVAr7jAwu9ohp1g+CgFTw7JM0xYA0ERoKx8wvgGzVLMWY/6AChniLBUieONwrhRWTiw38/rfD3ezw==",
   "success": true,
   "projectFilePath": "F:\\Programação\\Sales\\Sales\\SalesWebMvc\\src\\Sales.Business\\Sales.Business.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Iuri\\.nuget\\packages\\fluentvalidation\\11.8.0\\fluentvalidation.11.8.0.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "SR1YtXk8VPLwIpsCSXHSZ1OZ11IEf+f1VuUxi9BjHUmClbPQnXKu+unLFTm3tEY10O/+PzvtrHIDZtD2C6T6UQ==",
+  "dgSpecHash": "d8PH15no/mh+q65HhHUgV+cuJiIdAUy9bColt9yvUoDhSr7GFOj4yDINVoKYI0SIN4hajnW63l3kOdki6X/utQ==",
   "success": true,
   "projectFilePath": "F:\\Programação\\Sales\\Sales\\SalesWebMvc\\src\\Sales.App\\Sales.App.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\Iuri\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\Iuri\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Iuri\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
+    "C:\\Users\\Iuri\\.nuget\\packages\\fluentvalidation\\11.8.0\\fluentvalidation.11.8.0.nupkg.sha512",
     "C:\\Users\\Iuri\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\Iuri\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Iuri\\.nuget\\packages\\humanizer.core.af\\2.14.1\\humanizer.core.af.2.14.1.nupkg.sha512",

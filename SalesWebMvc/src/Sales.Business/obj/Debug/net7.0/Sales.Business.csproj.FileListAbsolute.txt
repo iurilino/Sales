@@ -9,3 +9,4 @@ F:\Programação\Sales\Sales\SalesWebMvc\src\Sales.Business\obj\Debug\net7.0\Sal
 F:\Programação\Sales\Sales\SalesWebMvc\src\Sales.Business\obj\Debug\net7.0\refint\Sales.Business.dll
 F:\Programação\Sales\Sales\SalesWebMvc\src\Sales.Business\obj\Debug\net7.0\Sales.Business.pdb
 F:\Programação\Sales\Sales\SalesWebMvc\src\Sales.Business\obj\Debug\net7.0\ref\Sales.Business.dll
+F:\Programação\Sales\Sales\SalesWebMvc\src\Sales.Business\obj\Debug\net7.0\Sales.Business.csproj.AssemblyReference.cache
