@@ -8,12 +8,11 @@ using Sales.Data.Repository;
 
 namespace Sales.App.Controllers
 {
-    public class VendasController : Controller
+    public class VendasController : BaseController
     {
         private readonly IHistoricoVendaRepository _historicoVendaRepository;
         private readonly IHistoricoVendaService _historicoVendaService;
         private readonly IClienteRepository _clienteRepository;
-        private readonly IProdutoRepository _produtoRepository;
         private readonly CarrinhoService _carrinhoService;
         private readonly IMapper _mapper;
 
@@ -24,12 +23,12 @@ namespace Sales.App.Controllers
                                 IClienteRepository clienteRepository,
                                 IProdutoRepository produtoRepository,
                                 CarrinhoService carrinhoService,
-                                IMapper mapper)
+                                IMapper mapper,
+                                INotificador notificador) : base(notificador)
         {
             _historicoVendaRepository = historicoVendaRepository;
             _historicoVendaService = historicoVendaService;
             _clienteRepository = clienteRepository;
-            _produtoRepository = produtoRepository;
             _carrinhoService = carrinhoService;
             _mapper = mapper;            
         }
@@ -42,7 +41,7 @@ namespace Sales.App.Controllers
         public async Task<IActionResult> Create()
         {
             var carrinho = _carrinhoService.ObterCarrinhoDaSessao();
-            var vendaViewModel = await PopularVendedorCliente(new VendaViewModel());
+            var vendaViewModel = await PopularCliente(new VendaViewModel());
 
 
             vendaViewModel.ItensVenda = carrinho.Itens;
@@ -52,35 +51,31 @@ namespace Sales.App.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(VendaViewModel vendaViewModel)
         {
+            vendaViewModel = await PopularCliente(vendaViewModel);
+
             for (int i = 0; i < vendaViewModel.ItensVenda.Count; i++)
             {
                 ModelState.Remove($"ItensVenda[{i}].Produto.Descricao");
             }
 
             if (!ModelState.IsValid) return View(vendaViewModel);
+            
 
             var venda = _mapper.Map<HistoricoVenda>(vendaViewModel);
 
-            //foreach (var item in venda.ItensVenda)
-            //{
-            //    var produto = await _produtoRepository.ObterPorID(item.Produto.Id);
-
-            //    _produtoRepository.Detach(produto);
-
-            //    item.Produto = produto;                
-            //}
-
             await _historicoVendaService.Adicionar(venda);
+
+            if (!OperacaoValida()) return View(vendaViewModel);           
 
             _carrinhoService.LimparCarrinho();
 
             return RedirectToAction("Index");
         }
 
-        private async Task<VendaViewModel> PopularVendedorCliente(VendaViewModel venda)
+        private async Task<VendaViewModel> PopularCliente(VendaViewModel venda)
         {
             venda.Clientes = _mapper.Map<IEnumerable<ClienteViewModel>>(await _clienteRepository.ObterTodos());
 

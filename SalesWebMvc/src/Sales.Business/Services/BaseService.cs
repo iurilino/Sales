@@ -38,5 +38,21 @@ namespace Sales.Business.Services
 
             return false;
         }
+
+        protected bool ExecutarValidacao<TV, TE>(TV validacao, IEnumerable<TE> entidades) where TV : AbstractValidator<TE> where TE : Entity
+        {
+            foreach (var entidade in entidades)
+            {
+                var validator = validacao.Validate(entidade);
+
+                if (!validator.IsValid)
+                {
+                    Notificar(validator);
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 }

@@ -1,18 +1,15 @@
 ﻿using Sales.Business.Interfaces;
 using Sales.Business.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Sales.Business.Models.Validations;
 
 namespace Sales.Business.Services
 {
-    public class HistoricoVendaService : IHistoricoVendaService
+    public class HistoricoVendaService : BaseService,IHistoricoVendaService
     {
         private readonly IHistoricoVendaRepository _historicoVendaRepository;
 
-        public HistoricoVendaService(IHistoricoVendaRepository historicoVendaRepository)
+        public HistoricoVendaService(IHistoricoVendaRepository historicoVendaRepository
+                                     ,INotificador notificador) : base(notificador)
         {
             _historicoVendaRepository = historicoVendaRepository;
         }
@@ -22,6 +19,8 @@ namespace Sales.Business.Services
             historicoVenda.DataVenda = DateTime.Now;
             historicoVenda.Status = 0;
             historicoVenda.ValorVenda = ValorTotal(historicoVenda);
+
+            if (!ExecutarValidacao(new ItemVendaValidation(), historicoVenda.ItensVenda)) return;
 
             foreach (var item in historicoVenda.ItensVenda)
             {
