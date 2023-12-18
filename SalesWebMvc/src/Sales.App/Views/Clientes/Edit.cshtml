@@ -9,7 +9,8 @@
 <hr />
 <form asp-action="Edit">
 
-    @*<vc:summary></vc:summary>*@
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <vc:summary></vc:summary>
 
     <input type="hidden" asp-for="Id" />
 
@@ -30,7 +31,18 @@
 
         </div>
 
+
         <div class="form-group col-md-6">
+
+            <label asp-for="Tipo"></label>
+
+            <div>
+                <input type="radio" value="1" asp-for="Tipo" checked="@(Model.Tipo == 1)" /> Pessoa Física
+                <input type="radio" value="2" asp-for="Tipo" checked="@(Model.Tipo == 2)" /> Pessoa Jurídica
+            </div>
+            <div>
+                &nbsp;
+            </div>
 
             <div class="form-check">
                 <label class="form-check-label">

@@ -10,7 +10,7 @@ namespace Sales.Business.Models
     {
         public string Nome { get; set; }
         public string Documento { get; set; }
-        public TipoDocumento Tipo { get; set; }
+        public Tipo Tipo { get; set; }
         public bool Ativo { get; set; }
 
         /* EF Relations*/

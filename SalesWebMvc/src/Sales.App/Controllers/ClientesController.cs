@@ -9,7 +9,7 @@ using Sales.Data.Repository;
 
 namespace Sales.App.Controllers
 {
-    public class ClientesController : Controller
+    public class ClientesController : BaseController
     {
         private readonly IClienteRepository _clienteRepository;
         private readonly IClienteService _clienteService;
@@ -17,7 +17,8 @@ namespace Sales.App.Controllers
 
         public ClientesController(IClienteRepository clienteRepository,
                                  IClienteService clienteService,
-                                 IMapper mapper)
+                                 IMapper mapper,
+                                 INotificador notificador) : base(notificador)
         {
             _clienteRepository = clienteRepository;
             _clienteService = clienteService;
@@ -55,12 +56,14 @@ namespace Sales.App.Controllers
             var cliente = _mapper.Map<Cliente>(clienteViewModel);
             await _clienteService.Adicionar(cliente);
 
+            if (!OperacaoValida()) return View(clienteViewModel);
+
             return RedirectToAction("Index");
         }
 
         public async Task<IActionResult> Edit(Guid id)
         {
-            var clienteViewModel = _mapper.Map<ClienteViewModel>(await _clienteRepository.ObterPorID(id));
+            var clienteViewModel = await ObterClienteHistoricoVendas(id);
 
             if (clienteViewModel == null)
             {
@@ -79,6 +82,8 @@ namespace Sales.App.Controllers
 
             var cliente = _mapper.Map<Cliente>(clienteViewModel);
             await _clienteService.Atualizar(cliente);
+
+            if (!OperacaoValida()) return View(await ObterClienteHistoricoVendas(id));
 
             return RedirectToAction("Index");
         }
@@ -102,6 +107,8 @@ namespace Sales.App.Controllers
             if (clienteViewModel == null) return NotFound();
 
             await _clienteService.Remover(id);
+
+            if (!OperacaoValida()) return View(clienteViewModel);
 
             return RedirectToAction("Index");
         }

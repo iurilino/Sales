@@ -14,9 +14,9 @@ namespace Sales.Business.Models.Validations
         {
             RuleFor(f => f.Nome)
                 .NotEmpty().WithMessage("O campo {PropertyName} precisa ser fornecido")
-                .Length(2, 100).WithMessage("O campo tata {PropertyName} precisa ter entre {MinLength} e {MaxLength}");
+                .Length(2, 100).WithMessage("O campo {PropertyName} precisa ter entre {MinLength} e {MaxLength}");
 
-            When(f => f.Tipo == TipoDocumento.PessoaFisica, () =>
+            When(f => f.Tipo == Tipo.PessoaFisica, () =>
             {
                 RuleFor(f => f.Documento.Length).Equal(CpfValidacao.TamanhoCpf)
                 .WithMessage("O campo Documento precisa ter {ComparisonValue} caracteres e foi fornecido {PropertyValue}.");
@@ -24,7 +24,7 @@ namespace Sales.Business.Models.Validations
                 .WithMessage("O Documento fornecido é invalido.");
             });
 
-            When(f => f.Tipo == TipoDocumento.PessoaJuridica, () =>
+            When(f => f.Tipo == Tipo.PessoaJuridica, () =>
             {
                 RuleFor(f => f.Documento.Length).Equal(CnpjValidacao.TamanhoCnpj)
                 .WithMessage("O campo Documento precisa ter {ComparisonValue} caracteres e foi fornecido {PropertyValue}.");

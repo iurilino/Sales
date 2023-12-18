@@ -6,7 +6,7 @@ using Sales.Business.Models;
 
 namespace Sales.App.Controllers
 {
-    public class DepartamentosController : Controller
+    public class DepartamentosController : BaseController
     {
         private readonly IDepartamentoRepository _departamentoRepository;
         private readonly IDepartamentoService _departamentoService;
@@ -14,7 +14,8 @@ namespace Sales.App.Controllers
 
         public DepartamentosController(IDepartamentoRepository departamentoRepository,
                                     IDepartamentoService departamentoService,
-                                    IMapper mapper)
+                                    IMapper mapper,
+                                    INotificador notificador) : base(notificador)
         {
             _departamentoRepository = departamentoRepository;
             _departamentoService = departamentoService;
@@ -52,6 +53,8 @@ namespace Sales.App.Controllers
             var departamento = _mapper.Map<Departamento>(departamentoViewModel);
             await _departamentoService.Adicionar(departamento);
 
+            if (!OperacaoValida()) return View(departamentoViewModel);
+
             return RedirectToAction("Index");
         }
 
@@ -72,10 +75,13 @@ namespace Sales.App.Controllers
         public async Task<IActionResult> Edit(Guid id, DepartamentoViewModel departamentoViewModel)
         {
             if (id != departamentoViewModel.Id) return NotFound();
+
             if (!ModelState.IsValid) return View(departamentoViewModel);
 
             var departamento = _mapper.Map<Departamento>(departamentoViewModel);
             await _departamentoService.Atualizar(departamento);
+
+            if (!OperacaoValida()) return View(await ObterDepartamentoProdutos(id));
 
             return RedirectToAction("Index");
         }
@@ -101,6 +107,8 @@ namespace Sales.App.Controllers
             if (departamentoViewModel == null) return NotFound();
 
             await _departamentoService.Remover(id);
+
+            if (!OperacaoValida()) return View(departamentoViewModel);
 
             return RedirectToAction("Index");
         }

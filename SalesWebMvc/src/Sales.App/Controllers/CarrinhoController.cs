@@ -38,9 +38,12 @@ namespace Sales.App.Controllers
                 TempData["ErrorMessage"] = "A quantidade deve ser maior que zero.";
                 return RedirectToAction("Details", "Produtos",new { id = produto.Id });
             }
-
-            _carrinhoService.AdicionarItemAoCarrinho(produto, quantidade);
-            return RedirectToAction("Index", "Produtos");
+            else
+            {
+                _carrinhoService.AdicionarItemAoCarrinho(produto, quantidade);
+                TempData["SuccessMessage"] = "Produto adicionado ao carrinho.";
+                return RedirectToAction("Index", "Produtos");
+            }
         }
 
         public IActionResult Remover(Guid id)

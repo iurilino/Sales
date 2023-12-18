@@ -19,15 +19,15 @@ namespace Sales.App.Data
                 return; //DB has been seeded
             }
 
-            Fornecedor f1 = new Fornecedor { Id = Guid.NewGuid(), Documento = "05793192530", Nome = "Iuri", Ativo = true, Tipo = 0 };
-            Fornecedor f2 = new Fornecedor { Id = Guid.NewGuid(), Documento = "99798479", Nome = "Igor", Ativo = true, Tipo = 0 };
+            Fornecedor f1 = new Fornecedor { Id = Guid.NewGuid(), Documento = "05793192530", Nome = "Iuri", Ativo = true, Tipo = Tipo.PessoaFisica };
+            Fornecedor f2 = new Fornecedor { Id = Guid.NewGuid(), Documento = "99798479", Nome = "Igor", Ativo = true, Tipo = Tipo.PessoaFisica };
 
             Departamento d1 = new Departamento { Id = Guid.NewGuid(), Ativo = true, Nome = "Livros" };
             Departamento d2 = new Departamento { Id = Guid.NewGuid(), Ativo = true, Nome = "Computadores" };
             Departamento d3 = new Departamento { Id = Guid.NewGuid(), Ativo = true, Nome = "Ferramentas" };
 
-            Cliente c1 = new Cliente { Id = Guid.NewGuid(), Ativo = true, Nome = "Superman", Email = "superman@gmail.com", Documento = "654321", Tipo = 0 };
-            Cliente c2 = new Cliente { Id = Guid.NewGuid(), Ativo = true, Nome = "Batman", Email = "batman@gmail.com", Documento = "654321", Tipo = 0 };
+            Cliente c1 = new Cliente { Id = Guid.NewGuid(), Ativo = true, Nome = "Superman", Email = "superman@gmail.com", Documento = "654321", Tipo = Tipo.PessoaFisica };
+            Cliente c2 = new Cliente { Id = Guid.NewGuid(), Ativo = true, Nome = "Batman", Email = "batman@gmail.com", Documento = "654321", Tipo = Tipo.PessoaFisica };
 
             Produto p1 = new Produto
             {

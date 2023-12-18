@@ -17,7 +17,7 @@ namespace Sales.App.ViewModels
         public string Documento { get; set; }
 
         [DisplayName("Tipo")]
-        public int TipoDocumento { get; set; }
+        public int Tipo { get; set; }
 
         [DisplayName("Ativo?")]
         public bool Ativo { get; set; }

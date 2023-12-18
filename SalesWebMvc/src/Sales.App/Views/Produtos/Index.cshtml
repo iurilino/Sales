@@ -6,9 +6,14 @@
 
 <h1>@ViewData["Title"]</h1>
 <hr />
-@* <vc:summary></vc:summary> *@
+<vc:summary></vc:summary>
 <p>
     <a class="btn btn-info" asp-action="Create">Novo Produto</a>
 </p>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="text-danger">@TempData["SuccessMessage"]</div>
+}
 
 <partial name="_ListaProdutos" />

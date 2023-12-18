@@ -8,7 +8,7 @@ using Sales.Business.Models;
 
 namespace Sales.App.Controllers
 {
-    public class ProdutosController : Controller
+    public class ProdutosController : BaseController
     {
         private readonly IProdutoRepository _produtoRepository;
         private readonly IProdutoService _produtoService;
@@ -22,7 +22,8 @@ namespace Sales.App.Controllers
                                   IDepartamentoRepository departamentoRepository,
                                   IFornecedorRepository fornecedorRepository,
                                   IMapper mapper,
-                                  CarrinhoService carrinhoService)
+                                  CarrinhoService carrinhoService,
+                                  INotificador notificador) : base(notificador)
         {
             _produtoRepository = produtoRepository;
             _produtoService = produtoService;
@@ -62,6 +63,8 @@ namespace Sales.App.Controllers
 
             await _produtoService.Adicionar(_mapper.Map<Produto>(produtoViewModel));
 
+            if (!OperacaoValida()) return View(produtoViewModel);
+
             return RedirectToAction("Index");
         }
 
@@ -94,6 +97,7 @@ namespace Sales.App.Controllers
             produtoAtualizado.Ativo = produtoViewModel.Ativo;
 
             await _produtoService.Atualizar(_mapper.Map<Produto>(produtoAtualizado));
+            if (!OperacaoValida()) return View(produtoViewModel);
 
             return RedirectToAction("Index");
         }
