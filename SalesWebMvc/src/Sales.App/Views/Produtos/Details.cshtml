@@ -34,6 +34,12 @@
                 @Html.DisplayFor(model => model.Descricao)
             </dd>
             <dt>
+                @Html.DisplayNameFor(model => model.QuantidadeEmEstoque)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.QuantidadeEmEstoque)
+            </dd>
+            <dt>
                 @Html.DisplayNameFor(model => model.Valor)
             </dt>
             <dd>
@@ -61,6 +67,7 @@
             <input type="hidden" asp-for="Valor" name="Valor" />
             <input type="hidden" asp-for="DataCadastro" name="DataCadastro" />
             <input type="hidden" asp-for="Ativo" name="Ativo" />
+            <input type="hidden" asp-for="QuantidadeEmEstoque" name="QuantidadeEmEstoque" />
             <label for="quantidade">Quantidade:</label>
             <input type="number" id="quantidade" name="quantidade" value="1" />
             <button type="submit">Adicionar ao Carrinho</button>

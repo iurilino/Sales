@@ -37,6 +37,9 @@ namespace Sales.App.ViewModels
         [ScaffoldColumn(false)]
         public DateTime DataCadastro { get; set; }
 
+        [DisplayName("Quantidade")]
+        public int QuantidadeEmEstoque { get; set; }
+
         [DisplayName("Ativo?")]
         public bool Ativo { get; set; }
 

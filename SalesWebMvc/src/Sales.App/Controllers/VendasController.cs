@@ -61,8 +61,7 @@ namespace Sales.App.Controllers
                 ModelState.Remove($"ItensVenda[{i}].Produto.Descricao");
             }
 
-            if (!ModelState.IsValid) return View(vendaViewModel);
-            
+            if (!ModelState.IsValid) return View(vendaViewModel);            
 
             var venda = _mapper.Map<HistoricoVenda>(vendaViewModel);
 

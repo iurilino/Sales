@@ -13,6 +13,7 @@ namespace Sales.Business.Models
         public string Imagem { get; set; }
         public decimal Valor { get; set; }
         public DateTime DataCadastro { get; set; }
+        public int QuantidadeEmEstoque {  get; set; }
         public bool Ativo { get; set; }
 
         /* EF Relations */

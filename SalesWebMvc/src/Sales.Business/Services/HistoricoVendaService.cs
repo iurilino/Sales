@@ -7,11 +7,14 @@ namespace Sales.Business.Services
     public class HistoricoVendaService : BaseService,IHistoricoVendaService
     {
         private readonly IHistoricoVendaRepository _historicoVendaRepository;
+        private readonly IProdutoRepository _produtoRepository;
 
         public HistoricoVendaService(IHistoricoVendaRepository historicoVendaRepository
+                                     ,IProdutoRepository produtoRepository
                                      ,INotificador notificador) : base(notificador)
         {
             _historicoVendaRepository = historicoVendaRepository;
+            _produtoRepository = produtoRepository;
         }
 
         public async Task Adicionar(HistoricoVenda historicoVenda)
@@ -20,7 +23,22 @@ namespace Sales.Business.Services
             historicoVenda.Status = 0;
             historicoVenda.ValorVenda = ValorTotal(historicoVenda);
 
-            if (!ExecutarValidacao(new ItemVendaValidation(), historicoVenda.ItensVenda)) return;
+            foreach (var entidade in historicoVenda.ItensVenda)
+            {
+                if (!ExecutarValidacao(new ItemVendaValidation(), entidade)) return;
+                
+                if (entidade.Quantidade > entidade.Produto.QuantidadeEmEstoque)
+                {
+                    Notificar("Quantidade indisponivel em estoque!");
+                    return;
+                }
+
+                Produto produto = await _produtoRepository.ObterPorID(entidade.Produto.Id);
+
+                produto.QuantidadeEmEstoque -= entidade.Quantidade;
+
+                await _produtoRepository.Atualizar(produto);
+            }     
 
             foreach (var item in historicoVenda.ItensVenda)
             {
