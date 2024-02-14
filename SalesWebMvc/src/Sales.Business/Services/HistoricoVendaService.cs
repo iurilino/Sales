@@ -33,18 +33,14 @@ namespace Sales.Business.Services
                     return;
                 }
 
-                Produto produto = await _produtoRepository.ObterPorID(entidade.Produto.Id);
+                await AtualizarProduto(entidade.Produto.Id, entidade.Quantidade);
+            }
 
-                produto.QuantidadeEmEstoque -= entidade.Quantidade;
-
-                await _produtoRepository.Atualizar(produto);
-            }     
-
-            foreach (var item in historicoVenda.ItensVenda)
+            foreach (var entidade in historicoVenda.ItensVenda)
             {
                 // Defina o estado do Produto como Detached
-                item.Produto = null;
-            }           
+                entidade.Produto = null;
+            }
 
             await _historicoVendaRepository.Adicionar(historicoVenda);
         }
@@ -62,6 +58,15 @@ namespace Sales.Business.Services
         public decimal ValorTotal(HistoricoVenda historicoVenda)
         {
             return historicoVenda.ItensVenda.Sum(x => x.Quantidade * x.ValorUnitario);
+        }
+
+        public async Task AtualizarProduto(Guid id, int quantidade)
+        {
+            Produto produto = await _produtoRepository.ObterPorID(id);
+
+            produto.QuantidadeEmEstoque -= quantidade;
+
+            await _produtoRepository.Atualizar(produto);
         }
     }
 }
