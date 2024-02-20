@@ -16,6 +16,7 @@ namespace Sales.Business.Models
         public Guid ProdutoId { get; set; }
         public Produto Produto { get; set; }
         public HistoricoVenda HistoricoVenda { get; set; }
+        public Guid HistoricoVendaId { get; set; }
         /* EF Relations */
 
 
