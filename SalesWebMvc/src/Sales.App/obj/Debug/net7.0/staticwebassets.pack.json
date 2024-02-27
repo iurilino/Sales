@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "F:\\Programação\\Sales\\Sales\\SalesWebMvc\\src\\Sales.App\\wwwroot\\imagens\\c548e61a-7b79-4593-988a-7b7dd0cc846a_Captura de tela 2024-02-26 211600.jpg",
+      "PackagePath": "staticwebassets\\imagens\\c548e61a-7b79-4593-988a-7b7dd0cc846a_Captura de tela 2024-02-26 211600.jpg"
+    },
+    {
       "Id": "F:\\Programação\\Sales\\Sales\\SalesWebMvc\\src\\Sales.App\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

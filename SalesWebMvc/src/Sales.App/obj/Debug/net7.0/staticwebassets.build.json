@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "SRTuBnrsk/MI2UshPkYd98+/hb9DpYKgbcWV72/URts=",
+  "Hash": "oBIjTa6QdfDyad/EGy9pyzXGXxBlqTE+UNJmIsJBIrE=",
   "Source": "Sales.App",
   "BasePath": "_content/Sales.App",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "F:\\Programação\\Sales\\Sales\\SalesWebMvc\\src\\Sales.App\\wwwroot\\imagens\\c548e61a-7b79-4593-988a-7b7dd0cc846a_Captura de tela 2024-02-26 211600.jpg",
+      "SourceId": "Sales.App",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\Programação\\Sales\\Sales\\SalesWebMvc\\src\\Sales.App\\wwwroot\\",
+      "BasePath": "_content/Sales.App",
+      "RelativePath": "imagens/c548e61a-7b79-4593-988a-7b7dd0cc846a_Captura de tela 2024-02-26 211600.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imagens\\c548e61a-7b79-4593-988a-7b7dd0cc846a_Captura de tela 2024-02-26 211600.jpg"
     },
     {
       "Identity": "F:\\Programação\\Sales\\Sales\\SalesWebMvc\\src\\Sales.App\\wwwroot\\js\\site.js",

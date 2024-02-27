@@ -61,6 +61,13 @@ namespace Sales.App.Controllers
             produtoViewModel = await PopularFornecedorDepartamento(produtoViewModel);
             if (!ModelState.IsValid) return View(produtoViewModel);
 
+            var imgPrefixo = Guid.NewGuid() + "_";
+            if (!await UploadArquivo(produtoViewModel.ImagemUpload, imgPrefixo))
+            {
+                return View(produtoViewModel);
+            }
+
+            produtoViewModel.Imagem = imgPrefixo + produtoViewModel.ImagemUpload.FileName;
             await _produtoService.Adicionar(_mapper.Map<Produto>(produtoViewModel));
 
             if (!OperacaoValida()) return View(produtoViewModel);
@@ -89,7 +96,18 @@ namespace Sales.App.Controllers
             var produtoAtualizado = await ObterProduto(id);
             produtoViewModel.Fornecedor = produtoAtualizado.Fornecedor;
             produtoViewModel.Departamento = produtoAtualizado.Departamento;
+            if (!ModelState.IsValid) return View(produtoViewModel);
 
+            if (produtoViewModel.ImagemUpload != null)
+            {
+                var imgPrefixo = Guid.NewGuid() + "_";
+                if (!await UploadArquivo(produtoViewModel.ImagemUpload, imgPrefixo))
+                {
+                    return View(produtoViewModel);
+                }
+
+                produtoAtualizado.Imagem = imgPrefixo + produtoViewModel.ImagemUpload.FileName;
+            }
 
             produtoAtualizado.Nome = produtoViewModel.Nome;
             produtoAtualizado.Descricao = produtoViewModel.Descricao;
@@ -145,6 +163,26 @@ namespace Sales.App.Controllers
             produto.Departamentos = _mapper.Map<IEnumerable<DepartamentoViewModel>>(await _departamentoRepository.ObterTodos());
 
             return produto;
+        }
+
+        private async Task<bool> UploadArquivo(IFormFile arquivo, string imgPrefixo)
+        {
+            if (arquivo.Length <= 0) return false;
+
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/imagens", imgPrefixo + arquivo.FileName);
+
+            if (System.IO.File.Exists(path))
+            {
+                ModelState.AddModelError(string.Empty, "Já existe arquivo com esse nome!");
+                return false;
+            }
+
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
+                await arquivo.CopyToAsync(stream);
+            }
+
+            return true;
         }
     }
 }
